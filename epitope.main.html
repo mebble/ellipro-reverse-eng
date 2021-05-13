@@ -1,0 +1,295 @@
+<?xml
+version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+    <!--[if IE 7 ]> <html lang="en" class="ie7"> <![endif]-->
+    <!--[if IE 8 ]> <html lang="en" class="ie8"> <![endif]-->
+    <!--[if IE 9 ]> <html lang="en" class="ie9"> <![endif]-->
+    <!--[if (gt IE 9)|!(IE)]><!-->
+    <html lang="en">
+        <!--<![endif]-->
+        <head>
+            <meta http-equiv="X-UA-Compatible" content="IE=10; IE=9; IE=8; IE=7; IE=EDGE"/>
+            <link rel="shortcut icon" href="/static/images/favicon.ico">
+            <title>ElliPro Prediction Result</title>
+            <!-- css -->
+            <link rel="stylesheet" href="/static/css/reset.css">
+            <link rel="stylesheet" href="/static/css/base.css">
+            <link rel="stylesheet" href="/static/ellipro/styles.css">
+            <!-- javascript -->
+            <script type="text/javascript" src="/static/js/jquery.js"></script>
+            <script type="text/javascript" src="/static/js/base.js"></script>
+            <script type="text/javascript" src="/static/js/sequence_validation.js"></script>
+            <script type="text/javascript" src="/static/js/jquery.tablesorter.min.js"></script>
+            <script type="text/javascript" src="/static/js/citation.js"></script>
+            <script language="javascript" type="text/javascript">
+                $(document).ready(function() {
+                    // result table sorter
+                    $.tablesorter.defaults.widgets = ['zebra'];
+
+                    // call the tablesorter plugin
+                    $(".tablesorter").tablesorter();
+                });
+
+                function popitup(url) {
+                    var windowFeatures = "width=" + 650 + ",height=" + 900 + ",scrollbars=yes";
+                    newWindow = window.open(url, '', windowFeatures);
+                    if (window.focus) {
+                        newWindow.focus()
+                    }
+                    return false;
+                }
+            </script>
+            <script type="text/javascript">
+
+                var _gaq = _gaq || [];
+                _gaq.push(['_setAccount', 'UA-21275858-2']);
+                _gaq.push(['_trackPageview']);
+
+                (function() {
+                    var ga = document.createElement('script');
+                    ga.type = 'text/javascript';
+                    ga.async = true;
+                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(ga, s);
+                }
+                )();
+            </script>
+        </head>
+        <body>
+            <div class="header-wrap">
+                <a href="/">
+                    <span>IEDB Analysis Resource</span>
+                </a>
+                <div class="iedb-nav">
+                    <ul>
+                        <li>
+                            <a href="/ellipro/" class="home" title="www.iedb.org &raquo; home">Home</a>
+                        </li>
+                        <li>
+                            <a href="/ellipro/help/" class="help">Help</a>
+                        </li>
+                        <li>
+                            <a href="/ellipro/example/" class="example">Example</a>
+                        </li>
+                        <li>
+                            <a href="/ellipro/reference/" class="reference">Reference</a>
+                        </li>
+                        <li>
+                            <a href="/ellipro/download/" class="download">Download</a>
+                        </li>
+                        <li>
+                            <a href="/ellipro/contact/" class="contact">Contact</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <!-- end of header-wrap -->
+            <div style="clear:both;"></div>
+            <div id="content">
+                <div class="output_title">Input Sequences: filegtat90tm.pdb</div>
+                <table class="seqformat">
+                    <tr>
+                        <td class="space">
+                            Chain: <b>A</b>
+                        </td>
+                    </tr>
+                    <tr class="sequence">
+                        <td class="seqnum">1</td>
+                        <td>AVSFIGSTEN DVGPSLGSYS LPFVYTRNKI GYQNANVWHI SKGFCVGLDG KVDLPVVGSL</td>
+                    </tr>
+                    <tr class="sequence">
+                        <td class="seqnum">61</td>
+                        <td>DGQSIYGLTE EVGLLIWMGD TKYSRGTAMS GNSWENVFSG WCVGANTAST QGLSVRVTPV</td>
+                    </tr>
+                    <tr class="sequence">
+                        <td class="seqnum">121</td>
+                        <td>ILKRNRYSVQ KTSIGSIRMR PYNGSSAGSV QTTVNFSLNP FTLND</td>
+                    </tr>
+                </table>
+                <h3>Predicted Linear Epitope(s):</h3>
+                <table cellspacing="1" class="tablesorter" id="result_table">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Chain</th>
+                            <th>Start</th>
+                            <th>End</th>
+                            <th>Peptide</th>
+                            <th>Number of residues</th>
+                            <th>Score</th>
+                            <th>3D structure</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td>A</td>
+                            <td>107</td>
+                            <td>117</td>
+                            <td>SGWCVGANTAS</td>
+                            <td>11</td>
+                            <td>0.762</td>
+                            <td>
+                                <input type="button" onclick="return popitup('/ellipro/result/jsmol?epitope=0&no=0')" value="View">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td>A</td>
+                            <td>153</td>
+                            <td>163</td>
+                            <td>YNGSSAGSVQT</td>
+                            <td>11</td>
+                            <td>0.758</td>
+                            <td>
+                                <input type="button" onclick="return popitup('/ellipro/result/jsmol?epitope=0&no=1')" value="View">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td>A</td>
+                            <td>129</td>
+                            <td>142</td>
+                            <td>ILKRNRYSVQK</td>
+                            <td>11</td>
+                            <td>0.712</td>
+                            <td>
+                                <input type="button" onclick="return popitup('/ellipro/result/jsmol?epitope=0&no=2')" value="View">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>4</td>
+                            <td>A</td>
+                            <td>62</td>
+                            <td>71</td>
+                            <td>LPVVGSLDGQ</td>
+                            <td>10</td>
+                            <td>0.702</td>
+                            <td>
+                                <input type="button" onclick="return popitup('/ellipro/result/jsmol?epitope=0&no=3')" value="View">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>5</td>
+                            <td>A</td>
+                            <td>13</td>
+                            <td>38</td>
+                            <td>GPSLGSYSLPFVYTRNKI</td>
+                            <td>18</td>
+                            <td>0.663</td>
+                            <td>
+                                <input type="button" onclick="return popitup('/ellipro/result/jsmol?epitope=0&no=4')" value="View">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>6</td>
+                            <td>A</td>
+                            <td>47</td>
+                            <td>53</td>
+                            <td>HISKGFC</td>
+                            <td>7</td>
+                            <td>0.659</td>
+                            <td>
+                                <input type="button" onclick="return popitup('/ellipro/result/jsmol?epitope=0&no=5')" value="View">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>7</td>
+                            <td>A</td>
+                            <td>170</td>
+                            <td>176</td>
+                            <td>NPFTLND</td>
+                            <td>7</td>
+                            <td>0.658</td>
+                            <td>
+                                <input type="button" onclick="return popitup('/ellipro/result/jsmol?epitope=0&no=6')" value="View">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>8</td>
+                            <td>A</td>
+                            <td>76</td>
+                            <td>79</td>
+                            <td>LTEE</td>
+                            <td>4</td>
+                            <td>0.576</td>
+                            <td>
+                                <input type="button" onclick="return popitup('/ellipro/result/jsmol?epitope=0&no=7')" value="View">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>9</td>
+                            <td>A</td>
+                            <td>1</td>
+                            <td>9</td>
+                            <td>AVSFIGSTE</td>
+                            <td>9</td>
+                            <td>0.565</td>
+                            <td>
+                                <input type="button" onclick="return popitup('/ellipro/result/jsmol?epitope=0&no=8')" value="View">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br/>
+                <h3>Predicted Discontinuous Epitope(s):</h3>
+                <table cellspacing="1" class="tablesorter" id="result_table">
+                    <thead>
+                        <tr>
+                            <th>No.</th>
+                            <th>Residues</th>
+                            <th>Number of residues</th>
+                            <th>Score</th>
+                            <th>3D structure</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>1</td>
+                            <td id="align_left">A:A1, A:V2, A:S3, A:F4, A:I5, A:G6, A:S7, A:T8, A:E9, A:H47, A:S49, A:K50, A:G51, A:F52, A:C53, A:C110, A:V111, A:G112, A:A113, A:N114, A:T115, A:A116, A:S117, A:Y153, A:N154, A:G155, A:S156, A:S157, A:A158, A:G159, A:S160, A:V161, A:Q162, A:T163</td>
+                            <td>34</td>
+                            <td>0.718</td>
+                            <td>
+                                <input type="button" onclick="return popitup('/ellipro/result/jsmol?epitope=1&no=0')" value="View">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>2</td>
+                            <td id="align_left">A:G13, A:P14, A:S15, A:L16, A:G17, A:S18, A:Y19, A:S20, A:L28, A:P29, A:F30, A:V31, A:Y32, A:T34, A:L76, A:T77, A:E78, A:E79, A:I129, A:L130, A:K131, A:R132, A:N133, A:R137, A:Y138, A:S139, A:Q141, A:N170, A:P171, A:T173, A:L174, A:N175</td>
+                            <td>32</td>
+                            <td>0.7</td>
+                            <td>
+                                <input type="button" onclick="return popitup('/ellipro/result/jsmol?epitope=1&no=1')" value="View">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>3</td>
+                            <td id="align_left">A:D61, A:L62, A:P63, A:V64, A:V65, A:G66, A:S67, A:L68, A:D69, A:G70, A:Q71, A:S72, A:I73, A:Y74, A:G75, A:M97, A:S98, A:G99, A:N100, A:S101, A:W102</td>
+                            <td>21</td>
+                            <td>0.555</td>
+                            <td>
+                                <input type="button" onclick="return popitup('/ellipro/result/jsmol?epitope=1&no=2')" value="View">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br/>
+                <input type="button" onclick="return popitup('/ellipro/result/table/')" value="Click here to view residue scores">
+                <br>
+                <br>
+                <a href="/media//tmp/ellipro/filegtat90tm.pdb" download="">
+                    <button type="button">Download pdb file</button>
+                </a>
+            </div>
+            <div id="footer">
+                &copy;2005-2021 | <a href="http://www.iedb.org/">IEDB Home</a>
+                <p>
+                    <small>
+                        Supported by a contract from the <a href="http://www.niaid.nih.gov/">National Institute of Allergy and Infectious Diseases</a>
+                        ,
+	a component of the National Institutes of Health in the Department of Health and Human Services.
+            </div>
+        </body>
+    </html>

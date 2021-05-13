@@ -1,0 +1,241 @@
+<?xml
+version="1.0" encoding="UTF-8"?>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+    <!--[if IE 7 ]> <html lang="en" class="ie7"> <![endif]-->
+    <!--[if IE 8 ]> <html lang="en" class="ie8"> <![endif]-->
+    <!--[if IE 9 ]> <html lang="en" class="ie9"> <![endif]-->
+    <!--[if (gt IE 9)|!(IE)]><!-->
+    <html lang="en">
+        <!--<![endif]-->
+        <head>
+            <meta http-equiv="X-UA-Compatible" content="IE=10; IE=9; IE=8; IE=7; IE=EDGE"/>
+            <title>JSmol Viewer - </title>
+            <!-- css -->
+            <link rel="stylesheet" href="/static/css/reset.css">
+            <link rel="stylesheet" href="/static/css/base.css">
+            <!-- javascript -->
+            <script type="text/javascript" src="/static/js/jquery.js"></script>
+            <script type="text/javascript" src="/static/js/base.js"></script>
+            <!-- JSmol -->
+            <script type="text/javascript" src="/static/jsmol/js/JSmoljQueryExt.js"></script>
+            <script type="text/javascript" src="/static/jsmol/js/JSmolCore.js"></script>
+            <script type="text/javascript" src="/static/jsmol/js/JSmolApplet.js"></script>
+            <script type="text/javascript" src="/static/jsmol/js/JSmolApi.js"></script>
+            <script type="text/javascript" src="/static/jsmol/js/j2sjmol.js"></script>
+            <script type="text/javascript" src="/static/jsmol/js/JSmol.js"></script>
+            <script type="text/javascript" src="/static/jsmol/js/JSmolControls.js"></script>
+            <script type="text/javascript">
+                //set up in HTML table, below
+                var jmolApplet0;
+                // logic is set by indicating order of USE -- default is HTML5 for this page, though
+                var s = document.location.search;
+
+                // Developers: The _debugCode flag is checked in j2s/core/core.z.js,
+                // and, if TRUE, skips loading the core methods, forcing those
+                // to be read from their individual directories. Set this
+                // true if you want to do some code debugging by inserting
+                // System.out.println, document.title, or alert commands
+                // anywhere in the Java or Jmol code.
+                Jmol._debugCode = (s.indexOf("debugcode") >= 0);
+
+                if (s.indexOf("USE=") >= 0)
+                    use = s.split("USE=")[1].split("&")[0]
+                else if (s.indexOf("JAVA") >= 0)
+                    use = "JAVA"
+                else if (s.indexOf("IMAGE") >= 0)
+                    use = "IMAGE"
+                else if (s.indexOf("NOWEBGL") >= 0)
+                    use = "JAVA IMAGE"
+                else if (s.indexOf("WEBGL") >= 0)
+                    use = "WEBGL HTML5"
+
+                if (s.indexOf("NOWEBGL") >= 0)
+                    use = use.replace(/WEBGL/, "")
+
+                var useSignedApplet = (s.indexOf("SIGNED") >= 0);
+                if (useSignedApplet && use == "HTML5")
+                    use = "JAVA";
+
+                jmol_isReady = function(applet) {
+                    document.title = ("Jmol Viewer")
+                    Jmol._getElement(applet, "appletdiv").style.border = "1px solid #ffffff"
+                }
+
+                var capturedText = window.location.search.match(/(\?|&)epitope=(.*?)&no=(.*?)(&|$)/);
+                capturedEpitope = capturedText ? decodeURIComponent(capturedText[2]) : '';
+                capturedNo = capturedText ? decodeURIComponent(capturedText[3]) : '';
+
+                // session = [
+                //     [
+                //         ['A', '107', '117', 'SGWCVGANTAS', '11', '0.762'],
+                //         ['A', '153', '163', 'YNGSSAGSVQT', '11', '0.758'],
+                //         ['A', '129', '142', 'ILKRNRYSVQK', '11', '0.712'],
+                //         ['A', '62', '71', 'LPVVGSLDGQ', '10', '0.702'],
+                //         ['A', '13', '38', 'GPSLGSYSLPFVYTRNKI', '18', '0.663'],
+                //         ['A', '47', '53', 'HISKGFC', '7', '0.659'],
+                //         ['A', '170', '176', 'NPFTLND', '7', '0.658'],
+                //         ['A', '76', '79', 'LTEE', '4', '0.576'],
+                //         ['A', '1', '9', 'AVSFIGSTE', '9', '0.565']
+                //     ], [
+                //         ['A:A1, A:V2, A:S3, A:F4, A:I5, A:G6, A:S7, A:T8, A:E9, A:H47, A:S49, A:K50, A:G51, A:F52, A:C53, A:C110, A:V111, A:G112, A:A113, A:N114, A:T115, A:A116, A:S117, A:Y153, A:N154, A:G155, A:S156, A:S157, A:A158, A:G159, A:S160, A:V161, A:Q162, A:T163', '34', '0.718'],
+                //         ['A:G13, A:P14, A:S15, A:L16, A:G17, A:S18, A:Y19, A:S20, A:L28, A:P29, A:F30, A:V31, A:Y32, A:T34, A:L76, A:T77, A:E78, A:E79, A:I129, A:L130, A:K131, A:R132, A:N133, A:R137, A:Y138, A:S139, A:Q141, A:N170, A:P171, A:T173, A:L174, A:N175', '32', '0.7'],
+                //         ['A:D61, A:L62, A:P63, A:V64, A:V65, A:G66, A:S67, A:L68, A:D69, A:G70, A:Q71, A:S72, A:I73, A:Y74, A:G75, A:M97, A:S98, A:G99, A:N100, A:S101, A:W102', '21', '0.555']
+                //     ], 'filegtat90tm.pdb']
+                session = [
+                    [
+                        ['A', '180', '190', 'APAPAPAPEVQ', '11', '0.858'],
+                        ['A', '287', '302', 'GNTCDNVKQRAALIDC', '16', '0.818'],
+                        ['A', '316', '325', 'IKDVVTQPQA', '10', '0.755'],
+                        ['A', '203', '215', 'NFNKATLKPEGQA', '13', '0.616'],
+                        ['A', '241', '250', 'DRIGSDAYNQ', '10', '0.597'],
+                        ['A', '263', '273', 'YLISKGIPADK', '11', '0.578'],
+                        ['A', '226', '232', 'NLDPKDG', '7', '0.523']
+                    ], [
+                        ['A:P284, A:G287, A:N288, A:T289, A:C290, A:D291, A:N292, A:V293, A:K294, A:Q295, A:R296, A:A297, A:A298, A:L299, A:I300, A:D301, A:C302', '17', '0.799'],
+                        ['A:I316, A:K317, A:D318, A:V319, A:V320, A:T321, A:Q322, A:P323, A:Q324, A:A325', '10', '0.755'],
+                        ['A:A180, A:P181, A:A182, A:P183, A:A184, A:P185, A:A186, A:P187, A:E188, A:V189, A:Q190, A:L227, A:D228, A:P229, A:K230, A:D231, A:G232, A:G315', '18', '0.717'],
+                        ['A:L209, A:K210, A:P211, A:E212, A:Q214, A:A215, A:D218, A:Q219, A:Y263, A:I265, A:S266, A:K267, A:G268, A:I269, A:P270, A:A271, A:D272, A:K273', '18', '0.649'],
+                        ['A:D241, A:R242, A:I243, A:G244, A:S245, A:D246, A:A247, A:Y248, A:Q250', '9', '0.619'],
+                        ['A:N203, A:F204, A:N205, A:K206, A:A207, A:T208', '6', '0.538'],
+                    ], '2mqe.pdb']
+
+                var epitope = session[capturedEpitope][capturedNo];
+                var residues;
+                if (capturedEpitope == 0) {
+                    residues = epitope[1] + "-" + epitope[2];
+                } else {
+                    residues = epitope[0].replace(/[A-Z|\_|null\:.]+/g, "");
+                }
+
+                $(document).ready(function() {
+                    var no = parseInt(capturedNo);
+                    if (capturedEpitope == 0) {
+                        $("#linear").show();
+                        $(".discontinous").hide();
+                        $(".linear .no").text(no + 1);
+                        $(".linear .chain").text(epitope[0]);
+                        $(".linear .start").text(epitope[1]);
+                        $(".linear .end").text(epitope[2]);
+                        $(".linear .peptide").text(epitope[3]);
+                        $(".linear .residues_number").text(epitope[4]);
+                        $(".linear .scores").text(epitope[5]);
+                    }
+                    if (capturedEpitope == 1) {
+                        $(".discontinous").show();
+                        $(".linear").hide();
+                        $(".discontinous .no").text(no + 1);
+                        $(".discontinous .residues").text(epitope[0]);
+                        $(".discontinous .residues_number").text(epitope[1]);
+                        $(".discontinous .scores").text(epitope[2]);
+                    }
+
+                    $
+                });
+
+                if (epitope[0].charAt(0) != "_") {
+                    residues = residues + ":" + epitope[0].charAt(0)
+                }
+                var pdb_file = session[2];
+                var path = "/media/tmp/ellipro/" + pdb_file + "";
+                // var path = "/data/" + pdb_file + "";
+                //var stmt = "select all; wireframe only; color [x808080]; color [xFFFFFF]; select "+residues+":"+chain+"; color [xFFFF66]; spacefill only;";
+                var stmt = "select all; wireframe only; color [xFFFFFF]; select (chain=A); color lightblue; select (chain=B); color lightgreen; select " + residues + "; color [xFFFF66]; spacefill only;";
+
+                var Info = {
+                    width: 600,
+                    height: 600,
+                    debug: false,
+                    color: "0xFFFFFF",
+                    use: "HTML5",
+                    // JAVA HTML5 WEBGL are all options
+                    j2sPath: "/static/jsmol/j2s",
+                    jarPath: "/static/jsmol/java",
+                    jarFile: "JmolAppletSigned.jar",
+                    isSigned: true,
+                    serverURL: "/static/jsmol/php/jsmol.php",
+                    readyFunction: jmol_isReady,
+                    disableJ2SLoadMonitor: false,
+                    disableInitialConsole: true,
+                    allowJavaScript: true
+                }
+                var lastPrompt = 0;
+            </script>
+            <script type="text/javascript">
+
+                var _gaq = _gaq || [];
+                _gaq.push(['_setAccount', 'UA-21275858-2']);
+                _gaq.push(['_trackPageview']);
+
+                (function() {
+                    var ga = document.createElement('script');
+                    ga.type = 'text/javascript';
+                    ga.async = true;
+                    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(ga, s);
+                }
+                )();
+            </script>
+        </head>
+        <body>
+            <div style="clear:both;"></div>
+            <br/>
+            <div id="content">
+                <h3>ElliPro: Epitope 3D Structures for filegtat90tm.pdb</h3>
+                <table cellspacing="1" class="tablesorter" id="result_table">
+                    <tr>
+                        <thead class="linear">
+                            <th>No.</th>
+                            <th>Chain</th>
+                            <th>Start</th>
+                            <th>End</th>
+                            <th>Peptide</th>
+                            <th>Number of residues</th>
+                            <th>Score</th>
+                        </thead>
+                        <tbody class="linear">
+                            <td class="no"></td>
+                            <td class="chain"></td>
+                            <td class="start"></td>
+                            <td class="end"></td>
+                            <td class="peptide"></td>
+                            <td class="residues_number"></td>
+                            <td class="scores"></td>
+                        </tbody>
+                    </tr>
+                    <tr>
+                        <thead class="discontinous">
+                            <th>No.</th>
+                            <th>Residues</th>
+                            <th>Number of residues</th>
+                            <th>Score</th>
+                        </thead>
+                        <tbody class="discontinous">
+                            <td class="no"></td>
+                            <td class="residues"></td>
+</td><td class="residues_number"></td>
+<td class="scores"></td>
+</tbody></tr></table>
+<div class="jsmol-title">
+    <span id="pdbid"></span>
+    JSmol-Rendered PDB Structure
+</div>
+<table class="jsmol-viewer">
+    <tr>
+        <td colspan="3">
+            <script>
+                myJmolObj = Jmol.getApplet("jmolApplet0", Info);
+                Jmol.script(myJmolObj, "load " + path + ";");
+                Jmol.script(myJmolObj, "set antialiasDisplay; zoom 100; color background [x000000]; " + stmt + ";");
+                Jmol.script(myJmolObj, "set echo top center; color echo white;");
+            </script>
+        </td>
+    </tr>
+</table>
+<!-- <canvas id="jmolApplet0_canvas2d"></canvas> -->
+</div>
+<div id="footer">
+    &copy;2005-2021 <a href="http://www.immuneepitope.org/">IEDB Home</a>
+</div>
+</body></html>
