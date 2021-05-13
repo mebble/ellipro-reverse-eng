@@ -86,6 +86,6 @@ The query string `epitope=0&no=0` in the URL refers to the particular epitope yo
 
 For example, `epitope=0&no=1` will render the second linear epitope whereas `epitope=1&no=1` will render the second discontinuous epitope. Look at the `session` variable in the `epitope.popup.out.html` file to know how many epitopes of each group are available for the given protein.
 
-You can now view the rendered proteins and their epitopes! The stick-like thing is the protein and the yellow part's the epitope.
+You can now view the rendered proteins and their epitopes! No PDB file size limits. The stick-like thing is the protein and the yellow part's the epitope.
 
 ![A rendered protein with one of its epitopes](./docs/3d-render-eg.png)
