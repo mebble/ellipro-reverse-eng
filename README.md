@@ -2,7 +2,7 @@
 
 The [ElliPro web portal](http://tools.iedb.org/ellipro/) is a tool used to predict antibody epitopes on proteins. To use it, you need to give it information on a protein you want to analyse. This information can be either a [PDB file](https://en.wikipedia.org/wiki/Protein_Data_Bank_(file_format)) of the protein or the protein's PDB ID as given in the [Protein Data Bank repository](https://www.rcsb.org/).
 
-Unfortunately, this web portal accepts only proteins whose PDB information is within 5 megabytes large. Most proteins are small enough to fit within this limit, but there are some big-ass mfs like [protein 2MQE](https://www.rcsb.org/3d-view/2MQE). The web portal refuses to accept this protein for analysis. So this repo is a way around this problem.
+Unfortunately, this web portal accepts only proteins whose PDB information is within 5 megabytes large. Most proteins are small enough to fit within this limit, but there are some big-ass mfs like [protein 2MQE](https://www.rcsb.org/3d-view/2MQE), which the web portal refuses to accept for analysis. So this project tries to get around this problem.
 
 ## Setup
 
