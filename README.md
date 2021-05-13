@@ -18,7 +18,7 @@ Put the PDB files of the proteins you want to analyse in that folder. For exampl
 
 ### Set up the ellipro software
 
-Besides being available as a web service, Ellipro is published as a standalone tool as well. This is a command-line program that's released as a java jar file. Download the latest jar from [here](http://tools.iedb.org/ellipro/download/) or older versions from [here](https://downloads.iedb.org/tools/ellipro/).
+Besides being available as a web service, Ellipro is published as a standalone tool as well. We will use this to process the protein's PDB. This tool is a command-line program that's released as a java jar file. Download the latest jar from [here](http://tools.iedb.org/ellipro/download/) or older versions from [here](https://downloads.iedb.org/tools/ellipro/).
 
 ## Usage
 
