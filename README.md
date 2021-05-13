@@ -71,10 +71,14 @@ The ElliPro web portal renders the 3D structures using a renderer called [JSmol]
 You have to:
 
 1. Put the ElliPro's output into the `session` variable found within `epitope.popup.out.html`. Remove any data columns that aren't relevant to the renderer. Look at the existing `session` variable to know which columns are required.
-2. Spin up an HTTP static file server so that you can view the `epitope.popup.out.html` in your browser. You can use python for this as follows:
+2. Spin up an HTTP static file server so that you can view the `epitope.popup.out.html` in your browser. You can use python for this, as follows:
     ```
     python3 -m http.server 5000
     ```
 3. Visit `http://localhost:5000/epitope.popup.out.html?epitope=0&no=0` in your browser
 
 The query params `epitope=0&no=0` in the URL refer to the particular epitope you want to render. Here, it's the first epitope. Changing it to `epitope=0&no=1` will render the second epitope. Look at the `session` variable in the `epitope.popup.out.html` file to know how this works.
+
+You can now view the rendered proteins and their epitopes!
+
+![A rendered protein with one of its epitopes](./docs/3d-render-eg.png)
