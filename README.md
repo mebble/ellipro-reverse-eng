@@ -16,7 +16,7 @@ mkdir -p ./media/tmp/ellipro
 
 Put the PDB files of the proteins you want to analyse in that folder. For example, if we have `2mqe.pdb`, we can put it in the folder so that we have `media/tmp/ellipro/2mqe.pdb`. Do this for all the PDB files you need.
 
-### Set up the ellipro software
+### Set up the ElliPro software
 
 Besides being available as a web service, ElliPro is published as a standalone tool as well. We will use this to process the protein's PDB. This tool is a command-line program that's released as a java jar file. Download the latest jar from [here](http://tools.iedb.org/ellipro/download/) or older versions from [here](https://downloads.iedb.org/tools/ellipro/).
 
