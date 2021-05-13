@@ -77,7 +77,13 @@ You have to:
     ```
 3. Visit `http://localhost:5000/epitope.popup.out.html?epitope=0&no=0` in your browser
 
-The query params `epitope=0&no=0` in the URL refer to the particular epitope you want to render. Here, it's the first epitope. Changing it to `epitope=0&no=1` will render the second epitope. Look at the `session` variable in the `epitope.popup.out.html` file to know how this works.
+The query string `epitope=0&no=0` in the URL refers to the particular epitope you want to render.
+
+- `epitope=0` refers to the predicted *linear* epitopes
+- `epitope=1` refers to the predicted *discontinuous* epitopes
+- `no=i` refers to the i'th epitope of either group (linear or discontinuous). This is 0-indexed i.e. 0 refers to the first epitope, 1 refers to the second, and so on.
+
+For example, `epitope=0&no=1` will render the second linear epitope whereas `epitope=1&no=1` will render the second discontinuous epitope. Look at the `session` variable in the `epitope.popup.out.html` file to know how many epitopes of each group are available for the given protein.
 
 You can now view the rendered proteins and their epitopes!
 
